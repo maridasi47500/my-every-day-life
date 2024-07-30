@@ -39,8 +39,10 @@ class Scaffold():
         import sys
         import re
         from model import Model
-        class {modelname}(Model):
+        from stuff import Stuff
+        class {modelname}(Stuff):
             def __init__(self):
+                self.tablename="{filename}"
                 self.con=sqlite3.connect(self.mydb)
                 self.con.row_factory = sqlite3.Row
                 self.cur=self.con.cursor()

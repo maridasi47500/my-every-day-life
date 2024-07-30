@@ -74,6 +74,10 @@ class Route():
         wow=Scriptpython(script,userid).lancer()
         self.set_json("{\"message\":\"/hello\"}")
         return self.render_figure.render_json()
+    def mystuff(self,search):
+        print("hello action")
+
+        return self.render_figure.render_figure("welcome/mystuff.html")
     def hello(self,search):
         print("hello action")
 
@@ -179,6 +183,7 @@ class Route():
             print("link route ",path)
             ROUTES={
             '^/signin$': self.signin,
+            '^/mystuff$':self.mystuff,
             '^/logmeout$':self.logout,
             '^/save_user$':self.save_user,
             '^/update_user$':self.update_user,
