@@ -1,3 +1,5 @@
 <div class="carousel-item <%="active" if index == 0 else ""%>">
+	<a href="#" onclick="$.ajax({url:'/myscript?script=<%="placego" if "place u go" in pic["name"] else ""%><%="sport" if "sport u practice" in pic["name"] else ""%><%="musicplay" if "music u play" in pic["name"] else ""%><%="musiclisten" if "music u listen" in pic["name"] else ""%>">&userid=<%=session["user_id"]%>'});return false">
 	<img src="/uploads/<%=pic["pic"]%>" class="d-block w-100" alt="<%=pic["name"]%>">
+	</a>
 					                                            </div>

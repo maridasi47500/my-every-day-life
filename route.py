@@ -3,6 +3,7 @@ from render_figure import RenderFigure
 from user import User
 from country import Country
 from somehtml import Somehtml
+from scriptpython import Scriptpython
 
 
 from mydb import Mydb
@@ -66,6 +67,13 @@ class Route():
         self.Program.logout()
         self.set_redirect("/")
         return self.render_figure.render_redirect()
+    def myscript(self,search):
+        script=search["script"][0]
+        userid=search["userid"][0]
+        print("hello action")
+        wow=Scriptpython(script,userid).lancer()
+        self.set_json("{\"message\":\"/hello\"}")
+        return self.render_figure.render_json()
     def hello(self,search):
         print("hello action")
 
@@ -180,7 +188,7 @@ class Route():
             '^/login$':self.login,
             '^/sign_up$':self.signup,
             '^/sign_in$':self.signin,
-
+                    '^/myscript$': self.myscript,
                     '^/$': self.hello
 
                     }

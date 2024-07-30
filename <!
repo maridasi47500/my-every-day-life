@@ -76,20 +76,15 @@ class Scaffold():
                 stuff=""
 
                 while inp != "n" and inp != "quit":
-                    inp = input('will u tell me any more {filename}? [y/n/quit]') 
-
+                    inp = input('is there any {filename}? [y/n/quit]') 
                     if inp == "y":
                         print("ok")
                         while stuff.strip() == "":
-                            stuff=input("what {filename}?")
-                            self.create({"name": stuff})
-
-                    elif inp == "n":
+                            stuff=input("")
+                    elif inp == "quit":
                         print("ok")
                     elif inp == "quit":
-                        print("bye")
-                    elif input !== "y":
-                        print("only answer y, n or quit")
+                        print("ok")
                 return row
             def create(self,params):
                 print("ok")

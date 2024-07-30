@@ -15,7 +15,7 @@ class Addpic():
             self.webpage = urlopen(self.req).read()
             self.soup = BeautifulSoup(self.webpage, "html.parser")
             self.results = {"rue ville ":"is zer a place u go to more often","solo music player femme homme ":"is zer music u listen to","ecole musique ":"music u play"}
-            self.results1 = {"terrain sport ":"sport u practice","soldiers femme homme ":"sports you are watching most often","store next to work ":"store u go to"}
+            self.results1 = {"terrain sport ":"sport u practice","soldiers femme homme ":"sports you watch","store next to work ":"store u go to"}
             print(self.results)
       def getbycountryid(self,myid):
             name=None
@@ -28,12 +28,23 @@ class Addpic():
                     if "place u go" in self.results[link]:
                         Scaffold("placego",["name","user_id"]).wrotetofile()
                         Fichier("./","addplacego.py").ecrire("""import sys\nfrom placego import Placego\nPlacego().addnewplacego(sys.argv[2])\n""")
+                        monfichier=Fichier("./","lancer_placego.sh").ecrire("""xterm -l -hold -e \\\"cd {myroot}/ && echo \\\"c'est mon script\\\" && bash -l -c \\\"{program} ./add{name}.py '$1' \\\""
+                                                """.format(myroot=os.getcwd(), name="placego",program="python3"))
                     elif "music u listen" in self.results[link]:
                         Scaffold("musiclisten",["name","user_id"]).wrotetofile()
                         Fichier("./","addmusiclisten.py").ecrire("""import sys\nfrom musiclisten import Musiclisten\nMusiclisten().addnewmusiclisten(sys.argv[2])\n""")
+                        monfichier=Fichier("./","lancer_musiclisten.sh").ecrire("""xterm -l -hold -e \\\"cd {myroot}/ && echo \\\"c'est mon script\\\" && bash -l -c \\\"{program} ./add{name}.py '$1' \\\""
+                                                """.format(myroot=os.getcwd(), name="musiclisten",program="python3"))
                     elif "music u play" in self.results[link]:
                         Scaffold("musicplay",["name","user_id"]).wrotetofile()
                         Fichier("./","addmusicplay.py").ecrire("""import sys\nfrom musicplay import Musicplay\nMusicplay().addnewmusicplay(sys.argv[2])\n""")
+                        monfichier=Fichier("./","lancer_musicplay.sh").ecrire("""xterm -l -hold -e \\\"cd {myroot}/ && echo \\\"c'est mon script\\\" && bash -l -c \\\"{program} ./add{name}.py '$1' \\\""
+                                                """.format(myroot=os.getcwd(), name="musicplay",program="python3"))
+                    elif "sport u practice" in self.results[link]:
+                        Scaffold("sport",["name","user_id"]).wrotetofile()
+                        Fichier("./","addsport.py").ecrire("""import sys\nfrom sport import Sport\nSport().addnewsport(sys.argv[2])\n""")
+                        monfichier=Fichier("./","lancer_addsport.sh").ecrire("""xterm -l -hold -e \\\"cd {myroot}/ && echo \\\"c'est mon script\\\" && bash -l -c \\\"{program} ./add{name}.py '$1' \\\""
+                                                """.format(myroot=os.getcwd(), name="sport",program="python3"))
             for link in self.results1:
                     name=link+" "+country["name"]
                     pic=Chercherimage("woman man "+name).dlpic()["nom"]
