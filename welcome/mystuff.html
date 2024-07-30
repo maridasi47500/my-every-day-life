@@ -1,0 +1,37 @@
+
+<p>kel music tu joue</p>
+<%mstuff=db.Musicplay.getallstuff()%>
+<%color = ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]) for i in range(len(musicplay))]%>
+<div class="stuff">
+<%=render_collection(collection=mstuff, partial='welcome/_stuff.html', as_='stuff',mylocals={"colors":colors})%>
+</div>
+<ul>
+<%=render_collection(collection=mstuff, partial='welcome/_somestuff.html', as_='stuff',mylocals={"colors":colors})%>
+</ul>
+<p>kel music tu ecout</p>
+<%mstuff=db.Musiclisten.getallstuff()%>
+<%color = ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]) for i in range(len(musicplay))]%>
+<div class="stuff">
+<%=render_collection(collection=mstuff, partial='welcome/_stuff.html', as_='stuff',mylocals={"colors":colors})%>
+</div>
+<ul>
+<%=render_collection(collection=mstuff, partial='welcome/_somestuff.html', as_='stuff',mylocals={"colors":colors})%>
+</ul>
+<p>kel sport tu fe</p>
+<%mstuff=db.Sport.getallstuff()%>
+<%color = ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]) for i in range(len(musicplay))]%>
+<div class="stuff">
+<%=render_collection(collection=mstuff, partial='welcome/_stuff.html', as_='stuff',mylocals={"colors":colors})%>
+</div>
+<ul>
+<%=render_collection(collection=mstuff, partial='welcome/_somestuff.html', as_='stuff',mylocals={"colors":colors})%>
+</ul>
+<p>a kel endroit tu va</p>
+<%mstuff=db.Placego.getallstuff()%>
+<%color = ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]) for i in range(len(musicplay))]%>
+<div class="stuff">
+<%=render_collection(collection=mstuff, partial='welcome/_stuff.html', as_='stuff',mylocals={"colors":colors})%>
+</div>
+<ul>
+<%=render_collection(collection=mstuff, partial='welcome/_somestuff.html', as_='stuff',mylocals={"colors":colors})%>
+</ul>

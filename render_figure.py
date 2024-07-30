@@ -1,5 +1,6 @@
 import re
 from fichier import Fichier
+import random
 import os
 import traceback
 from mydb import Mydb
@@ -37,7 +38,7 @@ class RenderFigure():
     def render_body(self):
         try:
           mystr=""
-          loc={"db":Mydb(),"session": self.session,"render_collection": self.render_collection,"params":self.params,"getparams": self.getparams,"Fichier":Fichier,"date":date,"datetime":datetime}
+          loc={"random":random,"db":Mydb(),"session": self.session,"render_collection": self.render_collection,"params":self.params,"getparams": self.getparams,"Fichier":Fichier,"date":date,"datetime":datetime}
           #loc={"session": self.session,"render_collection": self.render_collection,"params":self.params,"getparams": self.getparams,"Fichier":Fichier,"date":date}
           for n in self.params:
               loc[n]=self.params[n]
